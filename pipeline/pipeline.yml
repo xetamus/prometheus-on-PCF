@@ -11,7 +11,7 @@ resources:
 - name: pcf-prometheus-git
   type: git
   source:
-    uri: https://github.com/pivotal-cf/prometheus-on-PCF.git
+    uri: https://github.com/xetamus/prometheus-on-PCF.git
     branch: master 
 - name: prometheus-release
   type: github-release
@@ -119,3 +119,5 @@ jobs:
       nats_username: {{nats_username}}
       nats_password: {{nats_password}}
       grafana_admin_password: {{grafana_admin_password}}
+      ert_director_ip: {{ert_director_ip}}
+      ert_bosh_ca: {{ert_bosh_ca}}
