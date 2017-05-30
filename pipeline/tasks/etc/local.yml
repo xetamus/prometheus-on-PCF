@@ -32,11 +32,12 @@ prometheus:
 bosh_exporter:
   bosh:
     uaa:
-      url: https://${ert_director_ip}:8443
+      url: https://$(cat ert-bosh-creds/director_ip):8443
       client_id: ${prometheus_bosh_client}
       client_secret: ${prometheus_bosh_secret}
-    url: https://${ert_director_ip}
-    ca_cert: "${ert_bosh_ca}"
+    url: https://$(cat ert-bosh-creds/director_ip)
+    ca_cert: |
+$(cat ert-bosh-creds/bosh-ca.pem | awk '{printf "      %s\n", $0}')
 
 firehose_exporter:
   uaa:
