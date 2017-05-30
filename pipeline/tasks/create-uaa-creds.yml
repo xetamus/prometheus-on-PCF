@@ -11,6 +11,7 @@ inputs:
 
 params:
   pcf_ert_domain:
+  ert_director_ip:
   pcf_opsman_admin_username:
   pcf_opsman_admin_password:
   pcf_sys_domain:

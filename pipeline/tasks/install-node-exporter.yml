@@ -12,3 +12,7 @@ inputs:
 
 run:
   path: pcf-prometheus-git/pipeline/tasks/install-node-exporter.sh
+
+
+params:
+  ert_director_ip:

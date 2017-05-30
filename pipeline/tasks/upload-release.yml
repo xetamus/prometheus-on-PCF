@@ -15,3 +15,7 @@ inputs:
 
 run:
   path: pcf-prometheus-git/pipeline/tasks/upload-release.sh
+
+params:
+  ert_director_ip:
+  deploy_director_ip:

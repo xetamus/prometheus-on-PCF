@@ -101,7 +101,7 @@ jobs:
   plan:
   - aggregate:
     - get: pcf-prometheus-git
-    - get: ert-bosh-creds
+    - get: ert_bosh-creds
       passed: [upload-release]
   - task: install-node-exporter
     file: pcf-prometheus-git/pipeline/tasks/install-node-exporter.yml
