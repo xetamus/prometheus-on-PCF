@@ -14,6 +14,8 @@ fi
 BOSH_USERNAME=$(cat deploy-bosh-creds/bosh-username)
 BOSH_PASSWORD=$(cat deploy-bosh-creds/bosh-pass)
 
+bosh -n target ${deploy_director_ip}
+
 echo "Logging in to BOSH..."
 bosh login <<EOF 1>/dev/null
 $BOSH_USERNAME

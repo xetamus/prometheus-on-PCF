@@ -7,6 +7,8 @@ else
   bosh -n target `cat ert-bosh-creds/director_ip`
 fi
 
+bosh -n target ${ert_director_ip}
+
 BOSH_USERNAME=$(cat ert-bosh-creds/bosh-username)
 BOSH_PASSWORD=$(cat ert-bosh-creds/bosh-pass)
 
