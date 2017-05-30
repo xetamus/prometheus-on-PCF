@@ -15,7 +15,7 @@ uaa_client=$(echo $uaa_creds | jq -r .credential.value.identity)
 uaa_secret=$(echo $uaa_creds | jq -r .credential.value.password)
 
 echo "Creating Prometheus UAA Client..."
-uaac target https://uaa.${pcf_sys_domain} --skip-ssl-validation
+uaac target https://uaa.${pcf_sys_domain} --skip-ssl-validation -f
 uaac token client get $uaa_client -s $uaa_secret
 uaac client add ${prometheus_firehose_client} \
   --name ${prometheus_firehose_client} \
@@ -39,7 +39,7 @@ uaa_login_password=$($CURL --path=/api/v0/deployed/products/$director_id/credent
 uaa_admin_password=$($CURL --path=/api/v0/deployed/director/credentials/uaa_admin_user_credentials | jq -r .credential.value.password)
 
 echo "Logging into BOSH UAA..."
-uaac target https://$director_ip:8443 --skip-ssl-validation
+uaac target https://$director_ip:8443 --skip-ssl-validation -f
 uaac token owner get login -s $uaa_login_password<<EOF
 admin
 $uaa_admin_password

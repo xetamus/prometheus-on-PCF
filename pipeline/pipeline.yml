@@ -88,8 +88,8 @@ jobs:
     - get: prometheus-release
     - get: prometheus-custom-release
     - get: node-exporter-release
-    - get: deploy-bosh-creds
-    - get: ert-bosh-creds
+    - get: deploy_bosh-creds
+    - get: ert_bosh-creds
   - task: upload-release
     file: pcf-prometheus-git/pipeline/tasks/upload-release.yml
 
@@ -107,8 +107,8 @@ jobs:
   - aggregate:
     - get: pcf-prometheus-git
       trigger: true
-    - get: deploy-bosh-creds
-    - get: ert-bosh-creds
+    - get: deploy_bosh-creds
+    - get: ert_bosh-creds
       passed: [install-node-exporter]
   - task: deploy
     file: pcf-prometheus-git/pipeline/tasks/deploy.yml
