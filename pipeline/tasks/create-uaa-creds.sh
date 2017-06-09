@@ -32,7 +32,11 @@ uaac client add ${prometheus_cf_client} \
 
 echo "Getting BOSH director IP..."
 director_id=$($CURL --path=/api/v0/deployed/products | jq -r ".[].guid" | grep p-bosh)
-director_ip=$($CURL --path=/api/v0/deployed/products/$director_id/static_ips | jq -r .[0].ips[0])
+if [ -z "$pcf_director_hostname" ]; then
+  director_ip=$($CURL --path=/api/v0/deployed/products/$director_id/static_ips | jq -r .[0].ips[0])
+else
+  director_ip=${pcf_director_hostname}
+fi
 
 echo "Getting BOSH UAA creds..."
 uaa_login_password=$($CURL --path=/api/v0/deployed/products/$director_id/credentials/.director.uaa_login_client_credentials | jq -r .credential.value.password)
